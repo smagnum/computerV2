@@ -46,7 +46,7 @@ def numbers(x) :
 
     if 'i' in x:
         if '-' in x:
-            x = x.replcae('-', '+-')
+            x = x.replace('-', '+-')
         x = x.split('+')
       
         val = ''
