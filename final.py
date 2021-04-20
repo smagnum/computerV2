@@ -43,26 +43,50 @@ def search_string(str_list, myString):
 
 
 def numbers(x) :
-    try :
-        value = int (x)
-    except :
-        try :
-            value = eval(x)
-        except :
-            value = ''
-            str_list = get_string(x)
-        
-            for myStr in str_list:
-                result = search_string(elms, myStr)
-                
-                if result != None :
-                    value += str(result)
-                else :
-                    value += myStr
-            
-            value = eval(value)
 
-    return value
+    if 'i' in x:
+        if '-' in x:
+            x = x.replcae('-', '+-')
+        x = x.split('+')
+      
+        val = ''
+        i = 0
+        while i < len(x) :
+            if 'i' in x[i] :
+                
+                new = x[i]
+                x.remove(x[i])
+                x.append(new)
+            i +=1
+        
+        for chunk in x :
+            val += chunk
+            if chunk != x[-1]:
+                val += '+'
+    
+        return val
+        
+    else :
+        try :
+            value = int (x)
+        except :
+            try :
+                value = eval(x)
+            except :
+                value = ''
+                str_list = get_string(x)
+            
+                for myStr in str_list:
+                    result = search_string(elms, myStr)
+                    
+                    if result != None :
+                        value += str(result)
+                    else :
+                        value += myStr
+                
+                value = eval(value)
+
+        return value
 
 
 elms = {}
@@ -71,6 +95,7 @@ regex = re.compile('[a-z]|[A-Z]')
 while True :
     args = input('>>> ')
     args = args.replace(' ', '')
+    checker = regex.findall(args)
     if '=' in args :
         
         args = args.split('=')
@@ -84,11 +109,11 @@ while True :
                         value = numbers(args[1])
                         elms[var] = value
                         print (value)
-                    except :
+                    except e:
+                        print (e)
                         print ('Bad format')
                 else :
                     print ("You can't reserve i")
-                
                 
             else :
                 print ('Bad format')
@@ -97,6 +122,12 @@ while True :
 
     elif args in elms :
         print (elms[args])
+    elif checker != 0 :
+        try :
+            value = eval(args)
+            print (value)
+        except :
+            print ('Bad format')
     elif args == 'quit':
         sys.exit()
     else :
