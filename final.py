@@ -37,8 +37,32 @@ def get_string(val):
 # get_string('14so243u23ha4il')
 
 def search_string(str_list, myString):
-    if myStr in str_list :
-        return str_list[myStr]
+    if myString in str_list :
+        return str_list[myString]
+
+
+
+def numbers(x) :
+    try :
+        value = int (x)
+    except :
+        try :
+            value = eval(x)
+        except :
+            value = ''
+            str_list = get_string(x)
+        
+            for myStr in str_list:
+                result = search_string(elms, myStr)
+                
+                if result != None :
+                    value += str(result)
+                else :
+                    value += myStr
+            
+            value = eval(value)
+
+    return value
 
 
 elms = {}
@@ -51,35 +75,16 @@ while True :
         args = args.split('=')
 
         if len(args)  == 2 :
-            if args[0] != '' and args[1] != '':
+            if args[0] != '' and args[1] != '':             
                 var = args[0]
-                try :
-                    value = int (args[1])
-                except :
-                    try :
-                        value = eval(args[1])
-                    except :
-                        value = ''
-                        str_list = get_string(args[1])
-                        print ('STRIIING LIST')
-                        print (str_list)
-                        print ('')
-                        for myStr in str_list:
-                            result = search_string(elms, myStr)
-                            print ('the result ===')
-                            print (result)
-                            print (myStr)
-                            if result != None :
-                                value += str(result)
-                            else :
-                                value += myStr
-                        
-                        print ('this is the value')
-                        print (value)
-                        value = eval(value)
 
-                elms[var] = value
-                print (value)
+                try :
+                    value = numbers(args[1])
+                    elms[var] = value
+                    print (value)
+                except :
+                    print ('Bad format')
+                
                 
             else :
                 print ('Bad format')
@@ -96,71 +101,3 @@ while True :
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# try :
-                #     var = args[0]
-                #     try:
-                #         int(args[1])
-                #     except:
-                #         args[1] = eval(args[1])
-                #         elms[var] = args[1]
-                #         print (elms[var])
-                    
-                # except :
-                #     var = args[0]
-                #     val = ''
-                #     str_list = get_string(args[1])
-                #     for myStr in str_list:
-                        
-                #         result = search_string(elms, myStr)
-                #         if result != None :
-                #             val += str(result)
-                #         else :
-                #             val += myStr
-
-                #     elms[var] = eval(val)
-                #     print ('val 1')
-                #     print (elms[var])
-                #     print (elms)
-
-                    
-                # try :
-                    
-                #     val = eval(args[1])
-                #     elms[var] = val
-                #     print ('val 2')
-                #     print (val)
-                # except :
-                #     sdg = 0
-                #     # val = ''
-                #     # str_list = get_string(args[1])
-                #     # print ('get string')
-                #     # print (str_list)
-                #     # print (elms)
-                #     # for myStr in str_list:
-                        
-                #     #     result = search_string(elms, myStr)
-                #     #     if result != None :
-                #     #         val += str(result)
-                #     #     else :
-                #     #         val += myStr
-
-                #     # elms[var] = eval(val)
-                #     # print ('val 3')
-                #     # print (elms[var])
