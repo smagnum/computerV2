@@ -66,6 +66,7 @@ def numbers(x) :
 
 
 elms = {}
+regex = re.compile('[a-z]|[A-Z]')
 
 while True :
     args = input('>>> ')
@@ -75,15 +76,18 @@ while True :
         args = args.split('=')
 
         if len(args)  == 2 :
-            if args[0] != '' and args[1] != '':             
+            checker = regex.findall(args[0])
+            if args[0] != '' and args[1] != '' and len(checker) != 0:             
                 var = args[0]
-
-                try :
-                    value = numbers(args[1])
-                    elms[var] = value
-                    print (value)
-                except :
-                    print ('Bad format')
+                if var != 'i':
+                    try :
+                        value = numbers(args[1])
+                        elms[var] = value
+                        print (value)
+                    except :
+                        print ('Bad format')
+                else :
+                    print ("You can't reserve i")
                 
                 
             else :
@@ -99,5 +103,10 @@ while True :
         print (0)
 
 
+
+#   rational numbers
+#   complexe numbers
+#   matrice
+#   switch computerV1 to function and imported
 
 
