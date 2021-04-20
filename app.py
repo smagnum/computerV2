@@ -41,7 +41,7 @@ def search_string(str_list, myString):
 elms = {}
 
 while True :
-    args = input('> ')
+    args = input('>>> ')
     args = args.replace(' ', '')
     if '=' in args :
         
