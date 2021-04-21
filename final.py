@@ -89,6 +89,33 @@ def numbers(x) :
         return value
 
 
+def check_complex(x):
+    try :
+        x = x.replace('-', '+-')
+        x = x.split('+')
+
+        i_list = []
+        numbers = []
+        for chunk in x :
+            print (chunk)
+            if 'i' in chunk :
+                i_list.append(chunk)
+                if len(i_list) > 1:
+                    print (i_list)
+            else :
+                numbers.append(chunk)
+        
+        
+
+        print ('The try : ')
+        print (x)
+
+        return x
+    except : 
+        print ('The except : ')
+        return x
+
+
 elms = {}
 regex = re.compile('[a-z]|[A-Z]')
 
@@ -106,11 +133,13 @@ while True :
                 var = args[0]
                 if var != 'i':
                     try :
-                        value = numbers(args[1])
+                        if 'i' in args[1] :
+                            value = check_complex(args[1])
+                        else :
+                            value = numbers(args[1])
                         elms[var] = value
                         print (value)
-                    except e:
-                        print (e)
+                    except :
                         print ('Bad format')
                 else :
                     print ("You can't reserve i")
