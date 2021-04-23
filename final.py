@@ -1,6 +1,6 @@
 import sys
 import re
-
+import json
 
 
 
@@ -49,11 +49,14 @@ def findSqrt(n):
 
 # More than one argument
 
-def polynom(x, y):
-    if x == 'adsfasdf' :
-        msg = 'Invalid arguments'
-        code = 0
-        return jsonify(msg = msg, code = code)
+def polynom(x):
+    if 5 == 3 :
+        results = {
+            'msg' : 'Bad format',
+            'code' : 0
+        }
+            
+        return json.dumps(results)
 
     # 1 Argument
     else :
@@ -61,23 +64,22 @@ def polynom(x, y):
 
         # Separate param1 & param2
         try :
-            # params = params.replace('-', '+-')
-            # params = params.split('=')
-            # print (params)
+            params = params.replace('-', '+-')
+            params = params.split('=')
 
-            # if len(params)> 2 :
-            #     return jsonify(code = 0)
+            if len(params)> 2 :
+                return json.dumps(code = 0)
 
-            # param1 = params[0].replace(' ', '')
-            # param2 = params[1].replace(' ', '')
-
-            param1 = x
-            param2 = y
+            param1 = params[0].replace(' ', '')
+            param2 = params[1].replace(' ', '')
         
         except :
-            msg = 'Bad format'
-            code = 0
-            return jsonify(msg = msg, code = code)
+            results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+            return json.dumps(results)
 
         # Check first characters\
         if param1[0] == '+' and param1[1] == '-' :
@@ -88,6 +90,9 @@ def polynom(x, y):
 
         param1 = param1.split('+')
         param2 = param2.split('+')
+
+        print (param1)
+        print (param2)
 
         len1 = len(param1)
         len2 = len(param2)
@@ -150,9 +155,12 @@ def polynom(x, y):
                 j += 1
         except :
             if not 'df' in globals():
-                msg = 'Bad format'
-                code = 0
-                return jsonify(msg = msg, code = code)
+                results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+                return json.dumps(results)
 
 
 
@@ -161,53 +169,77 @@ def polynom(x, y):
             try :
                 float(var)
             except :
-                msg = 'Bad format'
-                code = 0
-                return jsonify(msg = msg, code = code)
+                results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+                return json.dumps(results)
 
         for var in var1 :
             try :
                 float(var)
             except :
-                msg = 'Bad format'
-                code = 0
-                return jsonify(msg = msg, code = code)
+                results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+                return json.dumps(results)
 
         for puiss in puiss1 :
             if puiss[0] != 'X' :
-                msg = 'Bad format'
-                code = 0
-                return jsonify(msg = msg, code = code)
+                results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+                return json.dumps(results)
 
             if puiss[1] != '^' :
-                msg = 'Bad format'
-                code = 0
-                return jsonify(msg = msg, code = code)
+                results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+                return json.dumps(results)
 
             try :
                 float(puiss[2])
             except :
-                msg = 'Bad format'
-                code = 0
-                return jsonify(msg = msg, code = code)
+                results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+                return json.dumps(results)
             
         for puiss in puiss2 :
             if puiss[0] != 'X' :
-                msg = 'Bad format'
-                code = 0
-                return jsonify(msg = msg, code = code)
+                results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+                return json.dumps(results)
 
             if puiss[1] != '^' :
-                msg = 'Bad format'
-                code = 0
-                return jsonify(msg = msg, code = code)
+                results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+                return json.dumps(results)
 
             try :
                 float(puiss[2])
             except :
-                msg = 'Bad format'
-                code = 0
-                return jsonify(msg = msg, code = code)
+                results = {
+                    'msg' : 'Bad format',
+                    'code' : 0
+                }
+            
+                return json.dumps(results)
 
         # Check duplicated Puiss
         try :
@@ -230,12 +262,18 @@ def polynom(x, y):
             
                 j +=1
         except :
-            msg = 'Bad format'
-            code = 0
-            return jsonify(msg = msg, code = code)
+            results = {
+                'msg' : 'Bad format',
+                'code' : 0
+            }
+            
+            return json.dumps(results)
 
 
-
+        print (var1)
+        print (puiss1)
+        print (var2)
+        print (puiss2)
         try :
             j = 0
             while j < len(puiss2):
@@ -256,10 +294,12 @@ def polynom(x, y):
                         i -=1 
                 j +=1
         except :
-            msg = 'Bad format'
-            code = 0
-            return jsonify(msg = msg, code = code)
-
+            results = {
+                'msg' : 'Bad format',
+                'code' : 0
+            }
+            
+            return json.dumps(results)
 
         # Switch var2 to var1
         try :
@@ -278,9 +318,12 @@ def polynom(x, y):
 
                 k += 1
         except :
-            msg = 'Bad format'
-            code = 0
-            return jsonify(msg = msg, code = code)
+            results = {
+                'msg' : 'Bad format',
+                'code' : 0
+            }
+            
+            return json.dumps(results)
 
 
 
@@ -297,9 +340,12 @@ def polynom(x, y):
                         var1.append(float(var2[i]) * -1)
                     i += 1
         except:
-            msg = 'Bad format'
-            code = 0
-            return jsonify(msg = msg, code = code)
+            results = {
+                'msg' : 'Bad format',
+                'code' : 0
+            }
+            
+            return json.dumps(results)
 
 
         
@@ -341,12 +387,16 @@ def polynom(x, y):
 
             if len(variables) == 0 :
                 msg = 'All real numbers is a solution'
-                
+            
+            print (variables)
             
         except :
-            msg = 'Bad format'
-            code = 0
-            return jsonify(msg = msg, code = code)
+            results = {
+                'msg' : 'Bad format',
+                'code' : 0
+            }
+            
+            return json.dumps(results)
     
 
         # The reduce form
@@ -380,12 +430,16 @@ def polynom(x, y):
                 reduce_form += '0*X^0'
 
             reduce_form += ' = 0'
-            
+        
+
         
         except :
-            msg = 'Bad format'
-            code = 0
-            return jsonify(msg = msg, code = code)
+            results = {
+                'msg' : 'Bad format',
+                'code' : 0
+            }
+            
+            return json.dumps(results)
 
         
 
@@ -416,15 +470,21 @@ def polynom(x, y):
                     a = variables[i].split('*')
                     a = float(a[0])
                 i += 1
-                
+            
+            
                 
 
         except :
-            msg = 'Bad format'
-            code = 0
-            return jsonify(msg = msg, code = code)
+            results = {
+                'msg' : 'Bad format',
+                'code' : 0
+            }
+            
+            return json.dumps(results)
 
-
+        
+        print (b)
+        print (c)
         # Some math
         Q = False
         try :
@@ -432,19 +492,40 @@ def polynom(x, y):
                 # print (reduce_form)
                 # print (degree_form)
                 #print ("The polynomial degree is strictly greater than 2, I can't solve.")
-                msg = "The polynomial degree is strictly greater than 2, I can't solve."
-                return jsonify(reduce_form = reduce_form, degree_form = degree_form, msg = msg)
+                results = {
+                    'msg' : "The polynomial degree is strictly greater than 2, I can't solve."
+                }
+                
+                return json.dumps(results)
                 Q = True
             
 
             if Q != True :
-                if 'a' not in globals():
-                    a = 0
+                # if 'a' not in globals():
+                #     print ('oui')
+                #     a = 0
 
-                if 'b' not in globals():
+                # if 'b' not in globals():
+                #     print ('non')
+                #     b = 0
+
+                # if 'c' not in globals():
+                #     c = 0
+                
+
+                try :
+                    check_var = a
+                except :
+                    a = 0
+                
+                try :
+                    check_var = b
+                except :
                     b = 0
 
-                if 'c' not in globals():
+                try :
+                    check_var = c
+                except :
                     c = 0
 
                 
@@ -452,22 +533,31 @@ def polynom(x, y):
                     # print (reduce_form)
                     # print (degree_form)
                     # print ("All real numbers is a solution")
-                    msg = "All real numbers is a solution"
-                    return jsonify(reduce_form = reduce_form, degree_form = degree_form, msg = msg)
+                    results = {
+                        'msg' : "All real numbers is a solution"
+                    }
+                    
+                    return json.dumps(results)
 
                 elif a == 0 and b == 0 and c != 0:
                     # print (degree_form)
                     # print ("There is no solution")
-                    msg = "There is no solution"
-                    return jsonify(reduce_form = reduce_form, degree_form = degree_form, msg = msg)
+                    results = {
+                        'msg' : "There is no solution"
+                    }
+                    
+                    return json.dumps(results)
 
                 elif a == 0:
                     # print (reduce_form)
                     # print (degree_form)
                     # print ("The solution is :")
-                    sol = round(-c/b, 6)
-                    msg = "The solution is :"
-                    return jsonify(reduce_form = reduce_form, degree_form = degree_form, msg = msg, sol = sol)
+                    results = {
+                        'sol' : round(-c/b, 6),
+                        'msg' : "The solution is :"
+                    }
+                    
+                    return json.dumps(results)
 
                 else:
 
@@ -479,39 +569,49 @@ def polynom(x, y):
                         # print (reduce_form)
                         # print (degree_form)
                         # print("Discriminant is strictly positive, the two solutions are: ") 
+                        results = {
+                            'sol1' : (-b+findSqrt(delt))/(2*a),
+                            'sol2' : (-b-findSqrt(delt))/(2*a),
+                            'sol1' : round(sol1, 6),
+                            'sol2' : round(sol2, 6), 
 
-                        sol1 = (-b+findSqrt(delt))/(2*a) 
-                        sol2 = (-b-findSqrt(delt))/(2*a) 
-                        sol1 = round(sol1, 6); 
-                        sol2 = round(sol2, 6); 
-
-                        msg = "Discriminant is strictly positive, the two solutions are: "
-                        return jsonify(reduce_form = reduce_form, degree_form = degree_form, msg = msg, sol1 = sol1, sol2 = sol2)
+                            'msg' : "Discriminant is strictly positive, the two solutions are: "
+                        }
+                        
+                        return json.dumps(results)
 
                     elif delt == 0:
                         # print (reduce_form)
                         # print (degree_form)
                         # print ("The only solution is : ")
-                        sol = round((-b)/(2*a), 6); 
-
-                        msg = "The only solution is :  "
-                        return jsonify(reduce_form = reduce_form, degree_form = degree_form, msg = msg, sol = sol)
+                        results = {
+                            'sol' : round((-b)/(2*a), 6),
+                            'msg' : "The only solution is :  "
+                        }
+                        
+                        return json.dumps(results)
 
                     elif delt < 0:
                         # print (reduce_form)
                         # print (degree_form)
                         # print ("Discriminant is strictly negative, the two solutions are: ")
+                        results = {
+                            'sol1' : str(round(-b / (2*a), 6)) + " + i * " + str(round(findSqrt(-delt)/(2*a), 6)),
+                            'sol2' : str(round(-b / (2*a), 6)) + " - i * " + str(round(findSqrt(-delt)/(2*a), 6)),
+                            'msg' : "Discriminant is strictly negative, the two solutions are: "
                         
-                        sol1 = str(round(-b / (2*a), 6)) + " + i * " + str(round(findSqrt(-delt)/(2*a), 6))
-                        sol2 = str(round(-b / (2*a), 6)) + " - i * " + str(round(findSqrt(-delt)/(2*a), 6))
-
-                        msg = "Discriminant is strictly negative, the two solutions are: "
-                        return jsonify(reduce_form = reduce_form, degree_form = degree_form, msg = msg, sol1 = sol1, sol2 = sol2)
+                        }
+                        return json.dumps(results)
 
         except :
-            msg = 'Bad format'
-            code = 0
-            return jsonify(msg = msg, code = code)
+            results = {
+                'msg' : 'Bad format',
+                'code' : 0
+            }
+            
+            return json.dumps(results)
+
+
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -637,9 +737,10 @@ regex = re.compile('[a-z]|[A-Z]')
 while True :
     args = input('>>> ')
     args = args.replace(' ', '')
+    
     checker = regex.findall(args)
     if '=' in args :
-        
+        test = args
         args = args.split('=')
 
         if len(args)  == 2 :
@@ -648,18 +749,18 @@ while True :
                 var = args[0]
                 if var != 'i':
                     try :
-                        if 'x' in args[1]:
-                            value = polynom(args[0], args[1])
+                        if 'x' in test:
+                            value = polynom(test)
                             print ('+++++++++++++++++polynome++++++++++++++')
                             print (value)
                             print ('+++++++++++++++++polynome++++++++++++++')
                         else :
                             value = numbers(args[1])
-                        # elms[var] = value
+                            elms[var] = value
+
                         print (value)
-                    except e:
-                        print (e)
-                        print ('Bssad format')
+                    except :
+                        print ('sBad format')
                 else :
                     print ("You can't reserve i")
                 
@@ -670,7 +771,7 @@ while True :
 
     elif args in elms :
         print (elms[args])
-    elif checker != 0 :
+    elif len(checker) == 0 :
         try :
             value = eval(args)
             print (value)
