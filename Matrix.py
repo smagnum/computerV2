@@ -30,14 +30,14 @@ def mul_matrix(x) :
 
     
 
-    # print ('N1 : ')
-    # print (n1)
-    # print ('M1 : ')
-    # print (m1)
-    # print ('N2 : ')
-    # print (n2)
-    # print ('M2 : ')
-    # print (m2)
+    print ('N1 : ')
+    print (n1)
+    print ('M1 : ')
+    print (m1)
+    print ('N2 : ')
+    print (n2)
+    print ('M2 : ')
+    print (m2)
 
     if m1 == n2:
         
@@ -49,33 +49,67 @@ def mul_matrix(x) :
         
         var1 = var1.split(';')
    
-
+        print ('=================var0==========')
+        i = 0
+        while i < len(var0):
+            var0[i] = var0[i][1:-1]
+            var0[i] = var0[i].split(',')
+            i += 1
+        print (var0)
+        print ('=================var1==========')
+        i = 0
+        while i < len(var1):
+            var1[i] = var1[i][1:-1]
+            var1[i] = var1[i].split(',')
+            i += 1
+        print (var1)
+        my_list = []
         val = 0
-        for v0 in var0 :
-           
-          
-            v0 = v0[1:-1]
-           
-            v0 = v0.split(',')
-          
-            for v1 in var1 :
-               
-                v1 = v1[1:-1]
-                v1 = v1.split(',')
-               
-                i = 0
-                
-                while i < len(v1):
-                    print (v0[i])
-                    print (v1[i])
-                    val += int(v0[i]) * int(v1[i])
-                    i += 1
+        i = 0
+        while i < n1 :
+            j = 0
+            while j < m2 :
+                k = 0
+                while k < m1 :
+                    val += int(var0[i][k]) * int(var1[k][j])
+                    print (val)
+                    if k == m1 -1:
+                        my_list.append(val)
+                        val = 0
+                    k += 1
+                j += 1
+            i += 1
+        
+        print ('RESULT')
+        print (my_list)
 
-        print (val)
+
+
+        # val = 0
+        # for v0 in var0 :
+           
+          
+        #     v0 = v0[1:-1]
+           
+        #     v0 = v0.split(',')
+          
+        #     for v1 in var1 :
+               
+        #         v1 = v1[1:-1]
+        #         v1 = v1.split(',')
+               
+        #         i = 0
+                
+        #         while i < len(v1):
+                    
+        #             val += int(v0[i]) * int(v1[i])
+        #             i += 1
+
+        # print (val)
     else:
         print ('Sorry')
 
-mul_matrix("[[2,3];[4,3]] * [[2,33];[1,3]]")
+mul_matrix("[[2,3];[4,3]] * [[2,3];[1,3]]")
 
 def check_matrix(x) :
     x = x.replace(' ', '')
