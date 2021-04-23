@@ -1,6 +1,4 @@
 
-
-
 def mul_matrix(x) :
     x = x.replace(' ', '')
     x = x.split('*')
