@@ -77,7 +77,8 @@ def mul_matrix(x) :
 
 def add_matrix(x) :
     x = x.replace(' ', '')
-    x = x.split('*') hna error khass + 
+    x = x.replace('-', '+-')
+    x = x.split('+')
     print ('X :')
     print (x)
     print ()
@@ -156,7 +157,7 @@ def add_matrix(x) :
     else :
         print ('Sorry')
 
-add_matrix("[[1,2];[4,3];[1,5]] * [[5,1];[2,3];[3,4]]")
+add_matrix("[[1,2];[4,3];[1,5]] - [[5,1];[2,3];[3,4]]")
 
 def check_matrix(x) :
     x = x.replace(' ', '')
