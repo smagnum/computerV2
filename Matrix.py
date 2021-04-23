@@ -73,12 +73,21 @@ def mul_matrix(x) :
     else:
         print ('Sorry')
 
-#mul_matrix("[[1,2,0];[4,3,-1]] * [[5,1];[2,3];[3,4]]")
+# mul_matrix("[[1,2,0];[4,3,1]] * [[5,1];[2,3];[3,4]]")
 
 def add_matrix(x) :
     x = x.replace(' ', '')
-    x = x.replace('-', '+-')
-    x = x.split('+')
+    sous = False
+    if ']-[' in x :
+        sous = True
+        x = x.replace(']-[', ']@[')
+    
+    elif ']+[' in x :
+        x = x.replace(']+[', ']@[')
+
+
+    x = x.replace(']+[', ']@[')
+    x = x.split('@')
     print ('X :')
     print (x)
     print ()
@@ -89,6 +98,7 @@ def add_matrix(x) :
     m2 = 0
     for chunk in x :
         chunk = chunk[1:-1]
+
         if chunk[0] == '[' and chunk[-1] == ']':
             var1 = chunk.split(';')
             new_var = var1[0].split(',')
@@ -146,7 +156,10 @@ def add_matrix(x) :
         while i < n1 :
             j = 0 
             while j < m1 :
-                val += int(var0[i][j]) + int(var1[i][j])
+                if sous == True :
+                    val += int(var0[i][j]) - int(var1[i][j])
+                else :
+                    val += int(var0[i][j]) + int(var1[i][j])
                 
                 my_list.append(val)
                 val = 0
@@ -157,7 +170,7 @@ def add_matrix(x) :
     else :
         print ('Sorry')
 
-add_matrix("[[1,2];[4,3];[1,5]] - [[5,1];[2,3];[3,4]]")
+add_matrix("[[1,-2];[4,3];[1,5]] - [[5,1];[2,3];[3,4]]")
 
 def check_matrix(x) :
     x = x.replace(' ', '')
