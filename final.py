@@ -360,8 +360,6 @@ def polynom(x):
                 t += 1
 
 
-
-
             i = 0
             while i < len(var1):
                 var1[i].split('*')
