@@ -9,8 +9,9 @@ import json
 import jsonify
 
 from polynom import polynom
-
-
+from number import numbers
+from complex_number import complex_number
+from Matrix import check_matrix
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -60,15 +61,24 @@ while True :
                 var = args[0]
                 if var != 'i':
                     try :
-                        if 'x' in test:
-                            value = polynom(test)
+                        if 'x' in args[1]:
+                            value = polynom(args[1])
                             print ('+++++++++++++++++polynome++++++++++++++')
                             print (value)
-                            print ('+++++++++++++++++polynome++++++++++++++')
-                        else :
-                            value = numbers(args[1])
                             elms[var] = value
-
+                            print ('+++++++++++++++++polynome++++++++++++++')
+                        elif 'i' in args[1] :
+                            value = complex_number(args[1])
+                            print (value)
+                            elms[var] = value
+                        elif '[' in args[1] :
+                            value = check_matrix(args[1])
+                            elms[var] = value
+                            print (value)
+                        else :
+                            value = numbers(args[1], elms)
+                            elms[var] = value
+                            print (value)
                         #print (value)
                     except e:
                         print (e)

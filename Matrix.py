@@ -168,7 +168,7 @@ def add_matrix(x) :
     else :
         print ('Sorry')
 
-add_matrix("[[1,-2];[4,3];[1,5]] - [[5,1];[2,3];[3,4]]")
+#add_matrix("[[1,-2];[4,3];[1,5]] - [[5,1];[2,3];[3,4]]")
 
 def check_matrix(x) :
     x = x.replace(' ', '')
@@ -196,16 +196,18 @@ def check_matrix(x) :
         x = x[1:-1]
         x = x.split(';')
 
+        result = ''
         for chunk in x :
             if chunk[0] == '[' and chunk[-1] == ']':
-                print (chunk.replace('', ''))
+                res = chunk.replace('', '')
+                result += ' ' + res
             else :
                 print ('Bad format')
-            
+        return result       
     else :
         print ('Bad format')
 
     
 
 
-# check_matrix("[[2,3];[4,3];[5,4];[1,2]] * [[2,33]]")
+#check_matrix("[[3,4]]")

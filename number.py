@@ -1,3 +1,4 @@
+import re
 
 def get_string(val):
     str_list = []
@@ -40,7 +41,7 @@ def search_string(str_list, myString):
 
 
 
-def numbers(x) :
+def numbers(x, elms) :
 
     if 'i' in x:
         if '-' in x:
