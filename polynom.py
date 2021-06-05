@@ -91,8 +91,8 @@ def polynom(x):
         param1 = param1.split('+')
         param2 = param2.split('+')
 
-        print (param1)
-        print (param2)
+        # print (param1)
+        # print (param2)
 
         len1 = len(param1)
         len2 = len(param2)
@@ -108,12 +108,16 @@ def polynom(x):
             i = 0
             while i < len1:
                 x = param1[i].replace(' ', '')
-
                 if x[0].upper() == 'X':
                     x = '1*' + x
                     
                 elif x[0] == '-' and x[1].upper() == 'X':
                     x = '-1*' + x[1:]
+
+                if 'x' in x and not '*' in x:
+                    x = x.split('x')
+                    x = x[0] + '*x' + x[1]
+
                 if '*' in x :
                     x = x.split('*')
 
@@ -134,13 +138,15 @@ def polynom(x):
             j = 0
             while j < len2:
                 x = param2[j].replace(' ', '')
-
                 if x[0].upper() == 'X':
-        
                     x = '1*' + x
                 elif x[0] == '-' and x[1].upper() == 'X':
-            
                     x = '-1*' + x[1:]
+
+                if 'x' in x and not '*' in x:
+                    x = x.split('x')
+                    x = x[0] + '*x' + x[1]
+
                 if '*' in x :
                     x = x.split('*')
                     if x[1][-1] == 'X' or x[1][-1] == 'x':
@@ -163,13 +169,13 @@ def polynom(x):
                 return json.dumps(results)
 
 
-
         # Check vars and puiss :
         for var in var1 :
             try :
                 float(var)
-            except :
+            except e:
                 results = {
+                    'e' : e,
                     'msg' : 'Bad format',
                     'code' : 0
                 }
@@ -270,10 +276,10 @@ def polynom(x):
             return json.dumps(results)
 
 
-        print (var1)
-        print (puiss1)
-        print (var2)
-        print (puiss2)
+        # print (var1)
+        # print (puiss1)
+        # print (var2)
+        # print (puiss2)
         try :
             j = 0
             while j < len(puiss2):
@@ -386,7 +392,7 @@ def polynom(x):
             if len(variables) == 0 :
                 msg = 'All real numbers is a solution'
             
-            print (variables)
+            # print (variables)
             
         except :
             results = {
@@ -410,7 +416,8 @@ def polynom(x):
 
                 i += 1
 
-            reduce_form = 'Reduce form : '
+            # reduce_form = 'Reduce form : '
+            reduce_form = ''
             i = 0
             if len(new) != 0 :
                 while i < len(new):
@@ -427,8 +434,13 @@ def polynom(x):
             else :
                 reduce_form += '0*X^0'
 
-            reduce_form += ' = 0'
-        
+            # reduce_form += ' = 0'
+
+            # print (reduce_form)
+            results = {
+                'reduce_form' : reduce_form
+            }
+            return results
 
         
         except :
@@ -609,3 +621,5 @@ def polynom(x):
             return json.dumps(results)
 
 
+
+# print (polynom("2*x^5 + 4x^2 - 5*x + 4 = 0"))

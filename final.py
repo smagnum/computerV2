@@ -61,20 +61,28 @@ while True :
                 var = args[0]
                 if var != 'i':
                     try :
-                        if 'x' in args[1]:
-                            value = polynom(args[1])
+                        if '(' in args[0]:
+                            value = polynom(args[1] + ' = 0')
                             print ('+++++++++++++++++polynome++++++++++++++')
-                            print (value)
-                            elms[var] = value
+                            print (value['reduce_form'])
+                            elms[var] = value['reduce_form']
                             print ('+++++++++++++++++polynome++++++++++++++')
                         elif 'i' in args[1] :
-                            value = complex_number(args[1])
-                            print (value)
-                            elms[var] = value
+                            try : 
+                                value = complex_number(args[1])
+                                print (value)
+                                elms[var] = value
+                            except :
+                                print ('Bad format')
                         elif '[' in args[1] :
                             value = check_matrix(args[1])
                             elms[var] = value
-                            print (value)
+                            value = value.split(" ")
+                            i = len(value)
+                            j = 1
+                            while j < i : 
+                                print (value[j])
+                                j += 1
                         else :
                             value = numbers(args[1], elms)
                             elms[var] = value

@@ -607,7 +607,7 @@ def polynom(x):
 
 
 
-equation = "2*x = 2"
+equation = "2*x^5 + 4*x^2 - 5*x + 4 = 0"
 print (polynom(equation))
 
 
