@@ -57,7 +57,20 @@ while True :
 
         if len(args)  == 2 :
             checker = regex.findall(args[0])
-            if args[0] != '' and args[1] != '' and len(checker) != 0:             
+
+            if '?' in args[1] :
+               
+                equation = list(args[0])
+                print (equation)
+                for eq in equation :
+                    if eq in elms :
+                        equation[equation.index(eq)] = str(elms[eq])
+                        print (equation)
+
+                equation = ''.join(equation)
+                value = eval(equation)
+                print (value)
+            elif args[0] != '' and args[1] != '' and len(checker) != 0:             
                 var = args[0]
                 if var != 'i':
                     try :
@@ -95,7 +108,7 @@ while True :
                     print ("You can't reserve i")
                 
             else :
-                print ('Bad format')
+                print ('qBad format')
         else :
             print ('Bad format')
 

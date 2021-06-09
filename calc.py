@@ -316,7 +316,10 @@ def my_eval(x) :
                     #print (tab[i+2])
                     ##res = float(tab[i-1]) * float(tab[i+2]) * -1
                 else :
-                    left = float(tab[i-1])
+                    try :
+                        left = float(tab[i-1])
+                    except :
+                        left = 0
 
                 if tab[i+1] == '-' :
                     right = float(tab[i+2]) * -1
@@ -324,7 +327,10 @@ def my_eval(x) :
                     #print (tab[i+2])
                     ##res = float(tab[i-1]) * float(tab[i+2]) * -1
                 else :
-                    right = float(tab[i+2])
+                    try :
+                        right = float(tab[i+2])
+                    except :
+                        right = 0
 
                 res = left + right
                 tab[i-1] = '#'
@@ -435,7 +441,7 @@ def my_calc(x):
                 # print ('--------')
                 # print (x[open_index+1: i])
                 # print ('--------')
-                res = my_eval(x[open_index+1: i])
+                res = eval(x[open_index+1: i])
                 j = open_index
                
                 while j <= i:
@@ -461,7 +467,7 @@ def my_calc(x):
                         # print ('+++++++')
                         # print (x)
                         # print ('+++++++')
-                        x = my_eval(x)
+                        x = eval(x)
                         result = str(x)
                         i = length + 1
                         length = len(str(x))
