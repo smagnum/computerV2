@@ -54,6 +54,7 @@ def my_eval(x) :
     i = 0
     num = ''
     tab = []
+    # x = 2 * 4 + 2 / 5 - 2
     while i < length :
         if x[i] == '%' or x[i] == '*' or x[i] == '/' or x[i] == '+' or x[i] == '-' : 
             tab.append(num)
@@ -61,42 +62,38 @@ def my_eval(x) :
             num = ''
         else :
             num += x[i]
-            if i == length -1 :
+            if i == length - 1:
                 tab.append(num)
         i += 1
 
     tab = clean(tab)
+    print ('1')
+    print (tab)
+    print ()
     # God of %
     length = len(tab)
     i = 0
     while i < length :
         # Multiplication
         if tab[i] == '%' :
-            print (tab)
-            
+           
             try : 
                 float(tab[i+1])
-                print ()
-                print ('********')
-                print (tab)
-                print ('********')
-                print ()
+               
                 if tab[i-2] == '-' :
-                    res = -1 * float(tab[i-1]) % float(tab[i+1])
+                    print ('here')
+                    res = (-1 * float(tab[i-1])) % float(tab[i+1])
+                    print (res)
                     tab[i-2] = '#'
                 else :
                     res = float(tab[i-1]) % float(tab[i+1])
                 tab[i-1] = '#'
                 tab[i+1] = str(res)
                 tab[i] = '#'
+
+                print (tab)
             except :
-                print ()
-                print (tab[i-1])
-                print (tab[i])
-                print (tab[i+1])
-                print (tab[i+2])
-                print ('test')
-                print ()
+                
 
                 if tab[i-2] == '-' :
                     left = float(tab[i-1]) * -1
@@ -112,40 +109,33 @@ def my_eval(x) :
                     #print (tab[i+2])
                     ##res = float(tab[i-1]) * float(tab[i+2]) * -1
                 else :
-                    right = float(tab[i+2])
+                    right = float(tab[i+1])
 
                 res = left % right
                 tab[i-1] = '#'
                 tab[i+2] = str(res)
                 tab[i] = '#'
                 
-            
-            print ()
-            print ('^^^^^^')
-            print (tab)
-            print ('^^^^^^ss')
+           
             tab = clean(tab)  
             length = len(tab)
             i = 0
         i += 1
     
-   
+    
     tab = clean(tab)
+    print (tab)
     # start with * && /
     length = len(tab)
     i = 0
     while i < length :
         # Multiplication
         if tab[i] == '*' :
-            print (tab)
+            
             
             try : 
                 float(tab[i+1])
-                print ()
-                print ('********')
-                print (tab)
-                print ('********')
-                print ()
+              
                 if tab[i-2] == '-' :
                     res = -1 * float(tab[i-1]) * float(tab[i+1])
                     tab[i-2] = '#'
@@ -155,13 +145,7 @@ def my_eval(x) :
                 tab[i+1] = str(res)
                 tab[i] = '#'
             except :
-                print ()
-                print (tab[i-1])
-                print (tab[i])
-                print (tab[i+1])
-                print (tab[i+2])
-                print ('test')
-                print ()
+              
 
                 if tab[i-2] == '-' :
                     left = float(tab[i-1]) * -1
@@ -185,10 +169,7 @@ def my_eval(x) :
                 tab[i] = '#'
                 
             
-            print ()
-            print ('^^^^^^')
-            print (tab)
-            print ('^^^^^^ss')
+           
             tab = clean(tab)  
             length = len(tab)
             i = 0
@@ -199,15 +180,11 @@ def my_eval(x) :
     while i < length :
         # Devision
         if tab[i] == '/' :
-            print (tab)
+           
             
             try : 
                 float(tab[i+1])
-                print ()
-                print ('********')
-                print (tab)
-                print ('********')
-                print ()
+              
                 if tab[i-2] == '-' :
                     res = -1 * float(tab[i-1]) / float(tab[i+1])
                     tab[i-2] = '#'
@@ -217,14 +194,7 @@ def my_eval(x) :
                 tab[i+1] = str(res)
                 tab[i] = '#'
             except :
-                print ()
-                print (tab[i-1])
-                print (tab[i])
-                print (tab[i+1])
-                print (tab[i+2])
-                print ('test')
-                print ()
-
+              
                 if tab[i-2] == '-' :
                     left = float(tab[i-1]) * -1
                     tab[i-2] = '#'
@@ -246,11 +216,7 @@ def my_eval(x) :
                 tab[i+2] = str(res)
                 tab[i] = '#'
                 
-            
-            print ()
-            print ('^^^^^^')
-            print (tab)
-            print ('^^^^^^ss')
+        
             tab = clean(tab)  
             length = len(tab)
             i = 0
@@ -284,15 +250,10 @@ def my_eval(x) :
         #     i = 0
         # i += 1
         if tab[i] == '+' :
-            print (tab)
-            
+         
             try : 
                 float(tab[i+1])
-                print ()
-                print ('********')
-                print (tab)
-                print ('********')
-                print ()
+              
                 if tab[i-2] == '-' :
                     res = -1 * float(tab[i-1]) + float(tab[i+1])
                     tab[i-2] = '#'
@@ -302,14 +263,7 @@ def my_eval(x) :
                 tab[i+1] = str(res)
                 tab[i] = '#'
             except :
-                print ()
-                print (tab[i-1])
-                print (tab[i])
-                print (tab[i+1])
-                print (tab[i+2])
-                print ('test')
-                print ()
-
+             
                 if tab[i-2] == '-' :
                     left = float(tab[i-1]) * -1
                     tab[i-2] = '#'
@@ -327,10 +281,9 @@ def my_eval(x) :
                     #print (tab[i+2])
                     ##res = float(tab[i-1]) * float(tab[i+2]) * -1
                 else :
-                    try :
-                        right = float(tab[i+2])
-                    except :
-                        right = 0
+                 
+                    right = float(tab[i+1])
+                   
 
                 res = left + right
                 tab[i-1] = '#'
@@ -338,10 +291,7 @@ def my_eval(x) :
                 tab[i] = '#'
                 
             
-            print ()
-            print ('^^^^^^')
-            print (tab)
-            print ('^^^^^^ss')
+         
             tab = clean(tab)  
             length = len(tab)
             i = 0
@@ -353,15 +303,10 @@ def my_eval(x) :
     while i < length :
         # Devision
         if tab[i] == '-' :
-            print (tab)
-            
+          
             try : 
                 float(tab[i+1])
-                print ()
-                print ('********')
-                print (tab)
-                print ('********')
-                print ()
+               
                 if tab[i-2] == '-' :
                     res = -1 * float(tab[i-1]) - float(tab[i+1])
                     tab[i-2] = '#'
@@ -371,13 +316,7 @@ def my_eval(x) :
                 tab[i+1] = str(res)
                 tab[i] = '#'
             except :
-                print ()
-                print (tab[i-1])
-                print (tab[i])
-                print (tab[i+1])
-                print (tab[i+2])
-                print ('test')
-                print ()
+               
 
                 if tab[i-2] == '-' :
                     left = float(tab[i-1]) * -1
@@ -393,7 +332,7 @@ def my_eval(x) :
                     #print (tab[i+2])
                     ##res = float(tab[i-1]) * float(tab[i+2]) * -1
                 else :
-                    right = float(tab[i+2])
+                    right = float(tab[i+1])
 
                 res = left - right
                 tab[i-1] = '#'
@@ -401,16 +340,20 @@ def my_eval(x) :
                 tab[i] = '#'
                 
             
-            print ()
-            print ('^^^^^^')
-            print (tab)
-            print ('^^^^^^ss')
+          
             tab = clean(tab)  
             length = len(tab)
             i = 0
         i += 1
+    
+    yy = 0
     print (tab)
-    return tab[-1]
+    for m in tab :
+        try :
+            yy += float(m)
+        except : 
+            sdf = 0
+    return yy
 
     
 
@@ -441,7 +384,13 @@ def my_calc(x):
                 # print ('--------')
                 # print (x[open_index+1: i])
                 # print ('--------')
-                res = eval(x[open_index+1: i])
+                print ()
+                print ('haaa li bghit ')
+                per = x[open_index+1: i]
+                per = per.replace('*+', '*')
+                print (x[open_index+1: i])
+                print ()
+                res = my_eval(per)
                 j = open_index
                
                 while j <= i:
@@ -460,14 +409,22 @@ def my_calc(x):
                 parenthese -= 1
 
                 if parenthese != 0 :
+                    print ()
+                    print ('oooooo')
                     print (x)
+                    print ()
                     return my_calc(x)
                 else :
                     try :
                         # print ('+++++++')
                         # print (x)
                         # print ('+++++++')
-                        x = eval(x)
+                        print ()
+                        print ('LAKHOR')
+                        print (x)
+                        x = x.replace('*+', '*')
+                        print ()
+                        x = my_eval(x)
                         result = str(x)
                         i = length + 1
                         length = len(str(x))
@@ -480,6 +437,6 @@ def my_calc(x):
     else :
         return result
 
-# print(my_calc("3 + 4*(5 + 6*(7-8*(9*10) - 3 / 7) - 6*4)-3+1"))
-print(my_calc("3 + 5(6+7(6+2-5)+3((2-3)+3)+2)"))
-# print(my_eval("-2%-2"))
+print(my_calc("3 + 4*(5 + 6*(7-8*(9*10) - 3 / 7) - 6*4)-3+1"))
+# print(my_calc("3 + 5(6+7(6+2-5)+3(2-3+3)+2)"))
+# print(my_eval("-455%454*554"))
