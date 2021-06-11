@@ -81,12 +81,16 @@ def my_eval(x) :
                 float(tab[i+1])
                
                 if tab[i-2] == '-' :
-                    print ('here')
-                    res = (-1 * float(tab[i-1])) % float(tab[i+1])
-                    print (res)
+                    try :
+                        res = (-1 * float(tab[i-1])) % float(tab[i+1])
+                    except :
+                        return 'Impossible'
                     tab[i-2] = '#'
                 else :
-                    res = float(tab[i-1]) % float(tab[i+1])
+                    try :
+                        res = float(tab[i-1]) % float(tab[i+1])
+                    except :
+                        return 'Impossible'
                 tab[i-1] = '#'
                 tab[i+1] = str(res)
                 tab[i] = '#'
@@ -110,8 +114,10 @@ def my_eval(x) :
                     ##res = float(tab[i-1]) * float(tab[i+2]) * -1
                 else :
                     right = float(tab[i+1])
-
-                res = left % right
+                try :
+                    res = left % right
+                except :
+                    return 'Impossible'
                 tab[i-1] = '#'
                 tab[i+2] = str(res)
                 tab[i] = '#'
@@ -186,10 +192,16 @@ def my_eval(x) :
                 float(tab[i+1])
               
                 if tab[i-2] == '-' :
-                    res = -1 * float(tab[i-1]) / float(tab[i+1])
+                    try :
+                        res = -1 * float(tab[i-1]) / float(tab[i+1])
+                    except :
+                        return 'Impossible'
                     tab[i-2] = '#'
                 else :
-                    res = float(tab[i-1]) / float(tab[i+1])
+                    try :
+                        res = float(tab[i-1]) / float(tab[i+1])
+                    except : 
+                        return 'Impossible'
                 tab[i-1] = '#'
                 tab[i+1] = str(res)
                 tab[i] = '#'
@@ -347,6 +359,7 @@ def my_eval(x) :
         i += 1
     
     yy = 0
+
     print (tab)
     for m in tab :
         try :
@@ -437,6 +450,6 @@ def my_calc(x):
     else :
         return result
 
-print(my_calc("3 + 4*(5 + 6*(7-8*(9*10) - 3 / 7) - 6*4)-3+1"))
+# print(my_calc("3 + 4*(5 + 6*(7-8*(9*10) - 3 / 7) - 6*4)-3+1"))
 # print(my_calc("3 + 5(6+7(6+2-5)+3(2-3+3)+2)"))
 # print(my_eval("-455%454*554"))

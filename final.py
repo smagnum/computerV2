@@ -12,6 +12,7 @@ from polynom import polynom
 from number import numbers
 from complex_number import complex_number
 from Matrix import check_matrix
+from calc import my_eval
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -68,7 +69,7 @@ while True :
                         print (equation)
 
                 equation = ''.join(equation)
-                value = eval(equation)
+                value = my_eval(equation)
                 print (value)
             elif args[0] != '' and args[1] != '' and len(checker) != 0:             
                 var = args[0]
