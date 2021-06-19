@@ -34,15 +34,19 @@ def simpli_B(tab) :
     num = ''
     for chunk in tab :
         try :
+            print ()
+            print(chunk)
+            print()
             int(chunk)
             num += chunk
+            print (num)
             if '-' in num :
                 num = int(num)
             elif '+' in num :
                 num = num.replace('+', '')
             
             tab[tab.index(chunk)] = num
-            res.append(eq)
+            res.append(num)
         except :
             if chunk == '+' or chunk == '-':
                 num += chunk
@@ -52,17 +56,22 @@ def simpli_B(tab) :
     return res
 
 def multiple (tab, number) :
-    try :
-        int(number)
-        print ('ok')
-    except :
-        print ('Do boucle ')
-    res2 = simpli_B(tab)
-    res = simpli_A(tab, number)
+    # try :
+    #     int(number)
+    #     print ('ok')
+    # except :
+    #     print ('Do boucle ')
+    nums = list(number)
+    nums = simpli_B(nums)
+    for num in nums :
+        print (num)
+    #res = simpli_A(tab, nums)
+    # res2 = simpli_B(tab)
+    # res = simpli_A(tab, number)
     
-    print ('Result here')
-    print (res)
-    print (res2)
+    # print ('Result here')
+    # print (res)
+    # print (res2)
     # tab = list(tab)
     # print (tab)
 
@@ -95,7 +104,7 @@ def multiple (tab, number) :
 
 
 
-multiple("y-1", "2-1")
+multiple("y-1", "2+3")
 
 def reduce_parenthese (paranthese_number, x) :
     param = list(paranthese_number)
