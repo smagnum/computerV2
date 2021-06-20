@@ -1,7 +1,7 @@
 
 def simpli_A(tab, number) :
     tab = list(tab)
-    print (tab)
+ 
 
     res = []
     num = ''
@@ -17,39 +17,50 @@ def simpli_A(tab, number) :
             tab[tab.index(chunk)] = num
             eq = int(num) * int(number)
             res.append(eq)
+           
+            num = ''
         except :
             if chunk == '+' or chunk == '-':
-                num += chunk
+                num = str(num) + str(chunk)
+                print ()
                 tab[tab.index(chunk)] = ''
             else :
-                res.append(number+chunk)
+                print ()
+                print ('testlkdsjflkdsjf')
+                print (num)
+                print ('testlkdsjflkdsjf')
+                print (chunk)
+                print (number)
+                print ()
+                print ('----s')
+                try :
+                    res.append(int(number) * int(chunk))
+                except :
+                    res.append(str(chunk)+ str(number))
+     
+        print (num)
     return res
 
 
 def simpli_B(tab) :
     tab = list(tab)
-    print (tab)
-
     res = []
     num = ''
     for chunk in tab :
         try :
-            print ()
-            print(chunk)
-            print()
             int(chunk)
             num += chunk
-            print (num)
             if '-' in num :
                 num = int(num)
             elif '+' in num :
                 num = num.replace('+', '')
             
             tab[tab.index(chunk)] = num
-            res.append(num)
+            res.append(int(num))
+            num = ''
         except :
             if chunk == '+' or chunk == '-':
-                num += chunk
+                num += str(chunk)
                 tab[tab.index(chunk)] = ''
             else :
                 res.append(chunk)
@@ -62,9 +73,20 @@ def multiple (tab, number) :
     # except :
     #     print ('Do boucle ')
     nums = list(number)
+    print ('nums test')
+    print (nums)
     nums = simpli_B(nums)
-    for num in nums :
-        print (num)
+    new_tab = simpli_B(tab)
+    print (nums)
+    for nu in nums :
+        res = simpli_A(new_tab, nu)
+        print ('resss')
+        print (res)
+
+
+
+   
+  
     #res = simpli_A(tab, nums)
     # res2 = simpli_B(tab)
     # res = simpli_A(tab, number)
@@ -104,7 +126,7 @@ def multiple (tab, number) :
 
 
 
-multiple("y-1", "2+3")
+multiple("-4-5+6", "y+3")
 
 def reduce_parenthese (paranthese_number, x) :
     param = list(paranthese_number)
