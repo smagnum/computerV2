@@ -77,22 +77,16 @@ def simpli_A(tab, number) :
                 try :
                     res.append(int(number) * int(chunk))
                 except :
-                    print ('here')
-                    print (chunk)
-                    print (number)
-
-             
-                    print ('*************')
+                   
                     test = chunk.split('y')
-                    print (test)
+                  
                     for kk in test :
                         try :
                             sdf = 1
                             int(kk)
-                            print ('here the kk')
-                            print (kk)
+                          
                             k = int(kk) * int(number)
-                            print (k)
+                 
                             k = str(k) + 'y'
                             res.append(k)
                         except :
@@ -263,47 +257,63 @@ def fix (tab) :
     res = my_list(res)
     return res
 
-print (my_list('2y+1'))
+# print (my_list('2y+1'))
     
 
 def reduce_parenthese2 (parenthese_number, x) :
    
-    param = my_list(parenthese_number)
-    print (param)
-    length = len(param)
-    i = 0
-    parenthese = 0
-    num = ''
-    while i < length :
-        if param[i] =='(' :
-            parenthese += 1
-            open_index = i
-        elif param[i] ==')' :
-            per = param[open_index + 1: i]
-   
+    if '(' in parenthese_number :
+        param = my_list(parenthese_number)
+ 
+        length = len(param)
+        i = 0
+        parenthese = 0
+        num = ''
+        while i < length :
+            if param[i] =='(' :
+                parenthese += 1
+                open_index = i
+            elif param[i] ==')' :
+                per = param[open_index + 1: i]
+    
 
-            try :
-                int(param[open_index - 1])
-                resultat = multiple (per, param[open_index - 1])
-             
-                resultat =  my_list(resultat)
-                print ('kalsdjflkasdjflk')
-                print (resultat)
-               
-                param[open_index : i + 1] = resultat
-                param[open_index - 1] = ''
-                print (param)
-                return reduce_parenthese2 (param , x)
+                try :
+                    
+                    int(param[open_index - 1])
+                
+                    number_to_pass = param[open_index - 1]
+                    if param[open_index - 2] == '-' :
+                        number_to_pass = int(param[open_index - 1]) * -1
+                    resultat = multiple (per, str(number_to_pass))
+                
+                    resultat =  my_list(resultat)
+                
+                    param[open_index : i + 1] = resultat
+                    param[open_index - 1] = ''
+                
+                    return reduce_parenthese2 (param , x)
+                
             
+                except e:
+                    print (e)
+                    print ('is not number')
         
-            except :
-                print ('is not number')
-    
-          
-        i += 1
+            
+            i += 1
+    else :
+        res = ''
+        for chunk in parenthese_number :
+            res += chunk
+        
+        res = res.replace('++', '+')
+        res = res.replace('-+', '+')
+        res = res.replace('--', '-')
+        res = res.replace('+-', '+')
+        
+        return res
     
 
-reduce_parenthese2 ("5(3+22(y+2))", 'y')
+# print(reduce_parenthese2 ("2+2y-11(4-4(1-y))", 'y'))
 
 def function_calc(eq, x) :
     eq = eq.replace(" ", "")
@@ -315,35 +325,58 @@ def function_calc(eq, x) :
     parenthese = 0
     while i < length :
         if eq[i] == '(' :
+            
             print ('1')
+            print ('-------')
+            print (tab)
+            print ('--------')
             parenthese += 1
             num += eq[i]
+            print (num)
         elif eq[i] == ')' :
             print (2)
+            print ('-------')
+            print (tab)
+            print ('--------')
             parenthese -= 1
             num += eq[i]
             # if parenthese == 0 :
             #     tab.append(num)
         elif parenthese == 0 and (eq[i] == '%' or eq[i] == '*' or eq[i] == '/' or eq[i] == '+' or eq[i] == '-') : 
             print (3)
+            print ('-------')
+            print (tab)
+            print ('--------')
             tab.append(num)
             tab.append(eq[i])
             num = ''
         else:
             print (4)
+            print ('-------')
+            print (tab)
+            print ('--------')
             num += eq[i]
             if i == length - 1:
                 tab.append(num)
         i += 1
+
     
-    # for t in tab :
-    #     if '(' in t :
-    #         print (res)
+    print ('the tab')
+    print (tab)
+    print ('++++++++++')
+
+    for t in tab :
+        if '(' in t :
+            res = reduce_parenthese2(t, x)
+            print ('-----')
+            print (res)
+            tab[tab.index(t)] = res
+            print ('-----')
 
     return tab
 
 
-# print (function_calc("3+1(2+3)-", 'y'))
+# print (function_calc("3+2(2+3)", 'y'))
 # print (function_calc("3 + 4(y + 2) + 5(3 + 2(y+1)) - 2", 'y'))
 
 
