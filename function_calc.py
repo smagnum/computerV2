@@ -278,7 +278,8 @@ def reduce_parenthese2 (parenthese_number, x) :
     
 
                 try :
-                    
+                    print ('who is here ! Come oonnnn ')
+                    print (param[open_index - 1])
                     int(param[open_index - 1])
                 
                     number_to_pass = param[open_index - 1]
@@ -297,6 +298,7 @@ def reduce_parenthese2 (parenthese_number, x) :
                 except e:
                     print (e)
                     print ('is not number')
+                    print (param[open_index - 1])
         
             
             i += 1
@@ -340,8 +342,8 @@ def function_calc(eq, x) :
             print ('--------')
             parenthese -= 1
             num += eq[i]
-            # if parenthese == 0 :
-            #     tab.append(num)
+            if i == length - 1 :
+                tab.append(num)
         elif parenthese == 0 and (eq[i] == '%' or eq[i] == '*' or eq[i] == '/' or eq[i] == '+' or eq[i] == '-') : 
             print (3)
             print ('-------')
@@ -377,6 +379,6 @@ def function_calc(eq, x) :
 
 
 # print (function_calc("3+2(2+3)", 'y'))
-# print (function_calc("3 + 4(y + 2) + 5(3 + 2(y+1)) - 2", 'y'))
+print (function_calc("3 + 4*(y + 2)", 'y'))
 
 
