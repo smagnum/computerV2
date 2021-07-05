@@ -418,7 +418,7 @@ def function_calc(eq, x) :
     return tab
 
 
-print (function_calc("3-2(-2y+3y-2--2)- 2", 'y'))
+# print (function_calc("3-2(-2y+3y-2--2)- 2", 'y'))
 # print (function_calc("3 + 4(y + 2)", 'y'))
 
 

@@ -67,9 +67,7 @@ def my_eval(x) :
         i += 1
 
     tab = clean(tab)
-    print ('1')
-    print (tab)
-    print ()
+   
     # God of %
     length = len(tab)
     i = 0
@@ -95,7 +93,6 @@ def my_eval(x) :
                 tab[i+1] = str(res)
                 tab[i] = '#'
 
-                print (tab)
             except :
                 
 
@@ -360,7 +357,7 @@ def my_eval(x) :
     
     yy = 0
 
-    print (tab)
+
     for m in tab :
         try :
             yy += float(m)
@@ -397,12 +394,10 @@ def my_calc(x):
                 # print ('--------')
                 # print (x[open_index+1: i])
                 # print ('--------')
-                print ()
-                print ('haaa li bghit ')
+               
                 per = x[open_index+1: i]
                 per = per.replace('*+', '*')
-                print (x[open_index+1: i])
-                print ()
+            
                 res = my_eval(per)
                 j = open_index
                
@@ -422,21 +417,16 @@ def my_calc(x):
                 parenthese -= 1
 
                 if parenthese != 0 :
-                    print ()
-                    print ('oooooo')
-                    print (x)
-                    print ()
+                
                     return my_calc(x)
                 else :
                     try :
                         # print ('+++++++')
                         # print (x)
                         # print ('+++++++')
-                        print ()
-                        print ('LAKHOR')
-                        print (x)
+                        
                         x = x.replace('*+', '*')
-                        print ()
+                     
                         x = my_eval(x)
                         result = str(x)
                         i = length + 1
@@ -452,5 +442,5 @@ def my_calc(x):
 
 # print(my_calc("3 + 4*(5 + 6*(7-8*(9*10) - 3 / 7) - 6*4)-3+1"))
 # print(my_calc("3 + 5(6+7(6+2-5)+3(2-3+3)+2)"))
-print(my_calc("5(3+4(24/6)(6*12))"))
+# print(my_calc("5(3+4(24/6)(6*12))"))
 # print(my_eval("-455%454*554"))

@@ -14,6 +14,8 @@ from complex_number import complex_number
 from Matrix import check_matrix
 from calc import my_eval
 
+from function_calc import function_calc
+
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -102,8 +104,8 @@ while True :
                             elms[var] = value
                             print (value)
                         #print (value)
-                    except e:
-                        print (e)
+                    except :
+                 
                         print ('sBad format')
                 else :
                     print ("You can't reserve i")
