@@ -50,6 +50,7 @@ elms = {}
 regex = re.compile('[a-z]|[A-Z]')
 
 while True :
+    print (elms)
     args = input('>>> ')
     args = args.replace(' ', '')
     
@@ -78,10 +79,11 @@ while True :
                 if var != 'i':
                     try :
                         if '(' in args[0]:
-                            value = polynom(args[1] + ' = 0')
+                            #value = polynom(args[1] + ' = 0')
                             print ('+++++++++++++++++polynome++++++++++++++')
-                            print (value['reduce_form'])
-                            elms[var] = value['reduce_form']
+                            #print (value['reduce_form'])
+                            print (args[1])
+                            elms[var] = args[1]
                             print ('+++++++++++++++++polynome++++++++++++++')
                         elif 'i' in args[1] :
                             try : 
@@ -105,7 +107,6 @@ while True :
                             print (value)
                         #print (value)
                     except :
-                 
                         print ('sBad format')
                 else :
                     print ("You can't reserve i")
@@ -116,6 +117,10 @@ while True :
             print ('Bad format')
 
     elif args in elms :
+        if '(' in args :
+            x = args[args.index('(') + 1 : args.index(')')]
+            
+            print (x)
         print (elms[args])
     elif len(checker) == 0 :
         try :

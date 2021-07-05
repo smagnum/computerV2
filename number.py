@@ -70,7 +70,12 @@ def numbers(x, elms) :
             value = int (x)
         except :
             try :
+                if x == 'x' : 
+                    print ('this is true')
+                    int (sdf)
                 value = eval(x)
+
+                
             except :
                 value = ''
                 str_list = get_string(x)
